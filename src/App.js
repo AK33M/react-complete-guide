@@ -51,7 +51,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -62,7 +63,7 @@ class App extends Component {
 
     if (this.state.showPersons) {
       persons =
-        <div>
+        (<div>
           {
             this.state.persons.map((person, index) => {
               return <Person
@@ -73,18 +74,28 @@ class App extends Component {
                 changed={(event) => this.nameChangedHandler(event, person.id)} />
             })
           }
-        </div>
+        </div>);
+
+      style.backgroundColor = 'red';
+    }
+
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I am a React App.</h1>
-        <button
-          style={style}
-          onClick={this.toggleNameHandler}>{this.state.showPersons ? "Hide names" : "Show names"}</button>
-        {persons}
-        <div>{this.state.otherState}</div>
-      </div>
+        <div className="App">
+          <h1>Hi, I am a React App.</h1>
+          <button
+            style={style}
+            onClick={this.toggleNameHandler}>{this.state.showPersons ? "Hide names" : "Show names"}</button>
+          {persons}
+          <p className={classes.join(" ")}>{this.state.otherState}</p>
+        </div>
     );
   }
 }
