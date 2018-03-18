@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Person from "./person/Person";
-import styles from './App.css';
+import styles from './App.scss';
 
 class App extends Component {
   state = {
