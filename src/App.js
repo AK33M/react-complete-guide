@@ -1,8 +1,7 @@
-import './App.css';
-
 import React, { Component } from 'react';
 
 import Person from "./person/Person";
+import styles from './App.css';
 
 class App extends Component {
   state = {
@@ -81,14 +80,14 @@ class App extends Component {
 
     let classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      classes.push(styles.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      classes.push(styles.bold);
     }
 
     return (
-        <div className="App">
+        <div className={styles.App}>
           <h1>Hi, I am a React App.</h1>
           <button
             style={style}
